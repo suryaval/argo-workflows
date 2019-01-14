@@ -1,0 +1,51 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: simplecondition-
+spec:
+  entrypoint: doNothing
+  templates:
+  - name: doNothing
+    steps:
+    # Add 1 and 2 to equal 3
+    - - name: add-numbers
+        template: add-numbers
+    # evaluate the result and decise what to do (multiplication or subtraction)
+    - - name: multiply
+        template: multiply                                  # invoke multiplication when addition result is 3
+        when: "{{steps.add-numbers.outputs.result}} == 3"
+      - name: subtract
+        template: subtract                                  # invoke subtraction when addition result is 2
+        when: "{{steps.add-numbers.outputs.result}} == 2"
+  
+  - name: add-numbers
+    value1: 1
+    value2: 2
+    script:
+      image: python:alpine3.6
+      command: [python]
+      source: |
+        result = $value1 + $value2
+        print(result)
+  
+  - name: multiply
+    value1: 1
+    value2: 2
+    container:
+      image: python:alpine3.6
+      command: [python]
+      source: |
+        result = $value1 * $value2
+        print(result)
+  
+  - name: subtract
+    value1: 100
+    value2: 50
+    container:
+      image: python:alpine3.6
+      command: [python]
+      source: |
+        result = $value1 - $value2
+        print(result)
+        
+  
