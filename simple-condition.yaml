@@ -25,7 +25,7 @@ spec:
       image: python:alpine3.6
       command: [python]
       source: |
-        result = $value1 + $value2
+        result = value1 + value2
         print(result)
   
   - name: multiply
@@ -35,7 +35,7 @@ spec:
       image: python:alpine3.6
       command: [python]
       source: |
-        result = $value1 * $value2
+        result = value1 * value2
         print(result)
   
   - name: subtract
@@ -45,7 +45,7 @@ spec:
       image: python:alpine3.6
       command: [python]
       source: |
-        result = $value1 - $value2
+        result = value1 - value2
         print(result)
         
   
