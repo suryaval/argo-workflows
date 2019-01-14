@@ -23,7 +23,7 @@ spec:
       image: python:alpine3.6
       command: [python]
       source: |
-        value1 = 1
+      	value1 = 1
 	value2 = 2
 	result = value1 + value2
         print(result)
@@ -33,7 +33,7 @@ spec:
       image: python:alpine3.6
       command: [python]
       source: |
-	value1 = 1
+      	value1 = 1
 	value2 = 2
         result = value1 * value2
         print(result)
@@ -43,7 +43,7 @@ spec:
       image: python:alpine3.6
       command: [python]
       source: |
-        value1 = 100
+      	value1 = 100
 	value2 = 50
 	result = value1 - value2
         print(result)
