@@ -23,10 +23,10 @@ spec:
       image: python:alpine3.6
       command: [python]
       source: |
-      	value1 = 1
-	value2 = 2
-	result = value1 + value2
-        print(result)
+       value1 = 1
+       value2 = 2
+       result = value1 + value2
+       print(result)
 
   - name: multiply
     container:
